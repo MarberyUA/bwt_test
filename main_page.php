@@ -15,6 +15,12 @@
         require 'blocks/nav_bar.php'
     ?>
     <?php
+    if ($_SESSION['message']){
+        echo '<p class="alert alert-danger error-message"> '. $_SESSION['message'] . '</p>';
+    }
+    unset($_SESSION['message']);
+    ?>
+    <?php
         if($_SESSION['user']){
             echo '<h1>Hello!' . $_SESSION['user']['first_name'] . '</h1>';
         }

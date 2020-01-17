@@ -46,3 +46,15 @@
     margin: 0 auto;
     margin-top: 15px;
 }
+
+.feedback-title {
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.feedback-card {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
