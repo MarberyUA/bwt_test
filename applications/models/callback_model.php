@@ -16,6 +16,17 @@ class UserCallback{
         $this->db_connection = $connection;
     }
 
+    public static function is_table($connection){
+        $new_query = '
+                CREATE TABLE IF NOT EXISTS users_callbacks (
+                    id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                    username varchar(50) null,
+                    user_email varchar(50) null,
+                    user_message varchar(300) null
+                )';
+        $connection->query($new_query) or die('Error!' . mysqli_error($connection));
+    }
+
     public static function all($connection){
         // getting all query with callbacks
 
@@ -40,7 +51,7 @@ class UserCallback{
 
         $query = "INSERT INTO users_callbacks VALUES (NULL, '$this->user_name', '$this->user_email', '$this->user_message')";
 
-        $saving = mysqli_query($this->db_connection, $query) or die('Error!');
+        $saving = mysqli_query($this->db_connection, $query) or die('Error!' . mysqli_error($this->db_connection));
 
         mysqli_close($this->db_connection);
     }

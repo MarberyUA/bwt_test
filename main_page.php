@@ -24,6 +24,7 @@
         if($_SESSION['user']){
             echo '<h1>Hello!' . $_SESSION['user']['first_name'] . '</h1>';
         }
+        require 'applications/database_connect.php';
     ?>
     <?php
         require 'blocks/footer_scripts.php'

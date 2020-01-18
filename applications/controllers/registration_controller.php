@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-    require_once 'applications/database_connect.php';
     require_once 'applications/models/registration_model.php';
 
     $first_name = $_POST['first-name'];
@@ -12,7 +11,10 @@
     $password = $_POST['password-1'];
     $password_confirm = $_POST['password-2'];
 
+    require 'applications/database_connect.php';
+
     if ($password == $password_confirm) {
+        User::is_table($connection);
         $user = new User($first_name, $last_name, $email, $password, $connection, $date, $gender);
         if($user->is_empty_fields()){
             $_SESSION['message'] = 'The fields can not include only spaces!';

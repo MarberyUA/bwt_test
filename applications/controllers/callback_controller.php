@@ -8,6 +8,7 @@ $name = $_POST['callback-user-name'];
 $email = $_POST['callback-user-email'];
 $message = $_POST['callback-user-message'];
 
+UserCallback::is_table($connection);
 $u_callback = new UserCallback($name, $email, $message, $connection);
 if($u_callback->is_empty_fields()){
     $_SESSION['message'] = 'The fields can not include only spaces!';
