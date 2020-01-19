@@ -1,6 +1,6 @@
 # btw_test project
 
-The first step you should do the git clone!
+The first step you should do it is $git clone!
 ```git
 git clone /repository-link/
 ```
