@@ -15,7 +15,7 @@ if ('/' == $uri) {
 } elseif ('/sign_out' == $uri) {
     include 'applications/controllers/sign_out_controller.php';
 } elseif ('/get_weather' == $uri) {
-    include 'applications/weather_parse.php';
+    include 'applications/views/weather_view.php';
 } elseif ('/callback' == $uri) {
     include 'applications/views/callback_view.php';
 } elseif ('/callback/create' == $uri) {

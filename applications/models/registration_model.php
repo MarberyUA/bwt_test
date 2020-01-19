@@ -36,6 +36,8 @@
         }
 
         public static function is_table($connection){
+            //creating a table if it was not created
+
             $new_query = '
                 CREATE TABLE IF NOT EXISTS users (
                     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,

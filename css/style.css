@@ -58,3 +58,25 @@
     margin: 0 auto;
     margin-top: 10px;
 }
+
+.todays-weather {
+    width: 20%;
+    margin: 0 auto;
+}
+
+.weather-day {
+    text-align: center;
+}
+
+.weather-temperature {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.temperature {
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+}
