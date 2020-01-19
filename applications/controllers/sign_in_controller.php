@@ -14,8 +14,8 @@
             "first_name" => $user['first_name'],
             "last_name" => $user['last_name']
         ];
-        header('Location: http://localhost/');
+        header('Location: http://' . $ur_host .'/');
     } else {
         $_SESSION['message'] = 'The password or email you have entered is invalid!';
-        header('Location: http://localhost/sign_in');
+        header('Location: http://'. $ur_host . '/sign_in');
     }
