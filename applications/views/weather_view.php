@@ -48,7 +48,7 @@ session_start();
         }
         echo '</div>';
     }
-    
+
     ?>
     <?php
     require 'blocks/footer_scripts.php'
