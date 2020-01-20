@@ -32,6 +32,16 @@ session_start();
                 <span>Enter your message:</span>
                 <input type="text" name="callback-user-message" required class="form-control width-add" placeholder="Message:">
             </div>
+            <?php
+                $first_int = random_int(0, 10);
+                $second_int = random_int(0, 10);
+                $result = $first_int + $second_int;
+            ?>
+            <div class="">
+                <span>Enter a value of the following operation: <?php echo '<br>' .$first_int . ' + ' . $second_int . '= ?'?></span><br>
+                <input type="text" name="callback-captcha" required class="form-control" placeholder="Enter a value:">
+                <input value="<?php echo $result?>" name="captcha-result" style="display: none">
+            </div>
             <button type="submit" class="btn btn-success">Sign up</button>
         </form>
     </div>

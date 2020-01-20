@@ -1,8 +1,8 @@
 <?php
-$ur_host = 'localhost';
-$host_user = 'root';
+$ur_host = '';
+$host_user = '';
 $host_user_password = '';
-$host_db_name = 'btw_test';
+$host_db_name = '';
 
 $connection = mysqli_connect($ur_host, $host_user, $host_user_password, $host_db_name);
 
