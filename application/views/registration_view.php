@@ -3,6 +3,7 @@
     <?php
     if($_SESSION['message']){
         echo '<p class="alert alert-danger error-message"> '. $_SESSION['message'] . '</p>';
+        unset($_SESSION['message']);
     }
     if(!$_SESSION['success']){
         echo '<form action="registration/register" method="post" enctype="multipart/form-data">
@@ -37,17 +38,9 @@
             <div class="">
                 <span>Confirm your password:</span>
                 <input type="password" name="password-2" class="form-control width-add" required placeholder="Confirm password:">
-            </div>';
-            if($_SESSION['message']) {
-                unset($_SESSION['message']);
-                include 'setting.php';
-                echo '<a href="' . 'http://' . HOST . '/registration"' . 'style="text-decoration: none;">';
-                echo '<button type="button" class="btn btn-primary">Try again</button>';
-                echo '</a>';
-            } else {
-                echo '<button type="submit" class="btn btn-success">Sign up</button>';
-            }
-        }
+            </div>
+            <button type="submit" class="btn btn-success">Sign up</button>';
+    }
     else {
         echo '<p class="alert alert-success error-message"> '. $_SESSION['success'] . '</p>';
         unset($_SESSION['success']);

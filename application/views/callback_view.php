@@ -7,6 +7,7 @@ else {
     echo '<div class="registration">';
     if ($_SESSION['message']) {
         echo '<p class="alert alert-danger error-message"> ' . $_SESSION['message'] . '</p>';
+        unset($_SESSION['message']);
     }
     echo '<form action="callback/create" method="post" enctype="multipart/form-data">
             <div class="">
@@ -28,13 +29,5 @@ else {
     echo '<span>Enter a value of the following operation <br>' . $first_int . ' + ' . $second_int . ' = ?</span><br>';
     echo '<input type="text" name="callback-captcha" required class="form-control" placeholder="Enter a value:">';
     echo '<input value="' . $result . '" name="captcha-result" style="display: none"></div>';
-    if($_SESSION['message']){
-        unset($_SESSION['message']);
-        include 'setting.php';
-        echo '<a href="http://' . HOST . '/callback" style="text-decoration: none;">';
-        echo '<button type="button" class="btn btn-primary">Try again</button></a>';
-    }
-    else {
-        echo '<button type="submit" class="btn btn-success">Sign up</button></form></div>';
-    }
+    echo '<button type="submit" class="btn btn-success">Sign up</button></form></div>';
 }

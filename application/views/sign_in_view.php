@@ -1,6 +1,7 @@
 <?php
 if ($_SESSION['message']){
     echo '<p class="alert alert-danger error-message"> '. $_SESSION['message'] . '</p>';
+    unset($_SESSION['message']);
 }
 ?>
 <?php if(!$_SESSION['success']) {
@@ -12,16 +13,8 @@ if ($_SESSION['message']){
         <div class="">
             <span>Your password:</span>
             <input type="password" name="password-login" class="form-control">
-        </div>';
-    if ($_SESSION['message']) {
-        unset($_SESSION['message']);
-        include 'setting.php';
-        echo '<a href="' . 'http://' . HOST . '/authentication">';
-        echo '<button type="button" class="btn btn-primary">Try again!</button>';
-        echo '</a>';
-    } else {
-        echo '<button type="submit" class="btn btn-success">Sign in</button>';
-    }
+        </div>;
+        <button type="submit" class="btn btn-success">Sign in</button>';
 }
 else {
     echo '<p class="alert alert-success error-message"> '. $_SESSION['success'] . '</p>';

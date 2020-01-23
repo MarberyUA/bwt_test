@@ -19,6 +19,7 @@ class CallbackController extends Controller
         else{
             $_SESSION['message'] = 'The captcha is invalid!';
         }
-        $this->action_index();
+        include 'setting.php';
+        header('Location: http://' . HOST . '/callback');
     }
 }

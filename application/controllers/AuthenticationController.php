@@ -15,7 +15,8 @@ class AuthenticationController extends Controller
 
     function action_sign_in(){
         $this->model->sign_in($_POST['login'], $_POST['password-login']);
-        $this->action_index();
+        include 'setting.php';
+        header('Location: http://' . HOST . '/authentication');
     }
 
     function action_sign_out(){
