@@ -15,6 +15,7 @@ class RegistrationController extends Controller
 
     function action_register(){
         RegistrationModel::sign_up($_POST['first-name'], $_POST['last-name'], $_POST['email'], $_POST['password-1'], $_POST['password-2'], $_POST['birthday'], $_POST['gender']);
-        $this->action_index();
+            $this->action_index();
     }
+
 }

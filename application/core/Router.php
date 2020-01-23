@@ -48,11 +48,14 @@ class Router
         if(method_exists($controller_object, $action)){
             $controller_object->$action_name();
         }
+        else {
+            Router::ErrorPage();
+        }
     }
 
     static function ErrorPage()
     {
         include 'setting.php';
-        header('Location: NotFound');
+        header('Location: http://' . HOST . '/NotFound');
     }
 }

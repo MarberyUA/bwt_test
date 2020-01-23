@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +12,18 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-link active" href="">Sign In</a>';
-        <a class="nav-link" href="">Sing up</a>
-        <a class="nav-link" href="">Today`s weather</a>
-        <a class="nav-link" href="">Call back</a>
-        <a class="nav-link" href=" ">Feedbacks</a>'
+        <a class="nav-link" href="<?php include 'setting.php'; echo 'http://' . HOST . '/registration';?>">Sing up</a>
+        <?php
+        if($_SESSION['user']){
+            echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication/sign_out'. '">Sign Out</a>';
+        }
+        else{
+            echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication'. '">Sign In</a>';
+        }
+        ?>
+        <a class="nav-link" href="<?php echo 'http://' . HOST . '/callback';?>">Callback</a>
+        <a class="nav-link" href="<?php echo 'http://' . HOST . '/feedbacks';?>">Feedbacks</a>'
+        <a class="nav-link" href="<?php echo 'http://' . HOST . '/'?>">Today`s weather</a>
     </nav>
     <?php include 'application/views/'.$content_view;?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
