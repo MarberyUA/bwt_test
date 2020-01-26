@@ -1,12 +1,12 @@
-
 <div class="registration">
     <?php
-    if($_SESSION['message']){
+
+    if($_SESSION['message']) {
         echo '<p class="alert alert-danger error-message"> '. $_SESSION['message'] . '</p>';
         unset($_SESSION['message']);
     }
-    if(!$_SESSION['success']){
-        echo '<form action="registration/register" method="post" enctype="multipart/form-data">
+    if(!$_SESSION['success']) {
+        echo '<form action="registration/Register" method="post" enctype="multipart/form-data">
             <div class="">
                 <span>Enter your first name:</span>
                 <input type="text" name="first-name" class="form-control width-add" required placeholder="First name:">
@@ -39,13 +39,9 @@
                 <span>Confirm your password:</span>
                 <input type="password" name="password-2" class="form-control width-add" required placeholder="Confirm password:">
             </div>
-            <button type="submit" class="btn btn-success">Sign up</button>';
-    }
-    else {
+            <button type="submit" class="btn btn-success">Sign up</button></form></div>';
+    } else {
         echo '<p class="alert alert-success error-message"> '. $_SESSION['success'] . '</p>';
         unset($_SESSION['success']);
     }
-        ?>
-
-    </form>
-</div>
+    ?>

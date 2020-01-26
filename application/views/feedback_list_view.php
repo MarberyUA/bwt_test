@@ -1,9 +1,9 @@
 <?php
-    if ($_SESSION['message']){
+
+    if ($_SESSION['message']) {
         echo '<p class="alert alert-danger error-message">' . $_SESSION['message'] .'</p>';
         unset($_SESSION['message']);
-    }
-    else {
+    } else {
         echo '<div class="feedback-title"><h1>Feedbacks:</h1></div>';
         foreach ($data as $res) {
             echo '<div class="card feedback-card">';

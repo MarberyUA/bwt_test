@@ -1,9 +1,11 @@
 <?php
 
+use Application\Core\Controller;
+
 class NotFoundController extends Controller
 {
-    public function action_index()
+    public function ActionIndex()
     {
-        $this->view->generate('404_view.php', 'template_view.php');
+        $this->view->Generate('404_view.php', 'template_view.php');
     }
 }

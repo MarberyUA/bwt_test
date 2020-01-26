@@ -1,4 +1,9 @@
 <?php
+
+use Application\Core\Controller;
+use Application\Core\View;
+require_once 'setting.php';
+
 class CallbackController extends Controller
 {
     function __construct()
@@ -7,19 +12,18 @@ class CallbackController extends Controller
         $this->view = new View();
     }
 
-    function action_index()
+    function ActionIndex()
     {
-        $this->view->generate('callback_view.php', 'template_view.php');
+        $this->view->Generate('callback_view.php', 'template_view.php');
     }
 
-    function action_create(){
-        if($_POST['callback-captcha'] == $_POST['captcha-result']){
-            $this->model->callback_creat($_POST['callback-user-name'], $_POST['callback-user-email'], $_POST['callback-user-message']);
-        }
-        else{
+    function ActionCreate()
+    {
+        if($_POST['callback-captcha'] == $_POST['captcha-result']) {
+            $this->model->CallbackCreate($_POST['callback-user-name'], $_POST['callback-user-email'], $_POST['callback-user-message']);
+        } else {
             $_SESSION['message'] = 'The captcha is invalid!';
         }
-        include 'setting.php';
         header('Location: http://' . HOST . '/callback');
     }
 }

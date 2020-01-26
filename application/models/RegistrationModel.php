@@ -1,21 +1,26 @@
 <?php
+
 session_start();
+
+use Application\Core\Model;
+use Application\DatabaseConnector;
 
 class RegistrationModel extends Model
 {
-
-    static function sign_up($name, $surname, $mail,  $user_password_1, $user_password_2, $birthday_date = null, $user_gender = 'Not matched'){
-        $db_connection = self::database_connection();
+    static function SignUp($name, $surname, $mail,  $user_password_1, $user_password_2, $birthday_date = null, $user_gender = 'Not matched'){
+        $db = DatabaseConnector::getInstrance();
+        $db_connection = $db->GetConnection();
         $query = mysqli_query($db_connection, "SELECT * FROM users WHERE email = '$mail'");
         $count = mysqli_num_rows($query);
-        if($count > 0){
+        if($count > 0) {
             return $_SESSION['message'] = 'The user with such email has been already created!';
         }
 
-        if(trim($name) == "" or trim($surname) == ""){
+        if(trim($name) == "" or trim($surname) == "") {
             return $_SESSION['message'] = 'The fields can not include only spaces!';
         }
-        if(($user_password_1 != $user_password_2) or (trim($user_password_1) == '')){
+
+        if(($user_password_1 != $user_password_2) or (trim($user_password_1) == '')) {
             return $_SESSION['message'] = 'The password can not include only spaces and the second password should be like the first';
         }
         $user_password_1 = md5($user_password_1);

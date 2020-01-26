@@ -1,5 +1,6 @@
 <?php
-if($_SESSION['user']){
+
+if($_SESSION['user']) {
     echo '<h3 style="text-align: center">Here is today`s weather</h3>';
 
     include('libs/simple_html_dom.php');
@@ -22,10 +23,10 @@ if($_SESSION['user']){
     $i = 0;
     $day_times = ['2:00', '5:00', '8:00', '11:00', '14:00', '17:00', '20:00', '23:00'];
     $others = $html->find('.chart__temperature');
-    foreach ($others as $temperature){
+    foreach ($others as $temperature) {
         $others_temperature = $temperature->find('.unit_temperature_c');
         echo '<div class="temperature alert alert-secondary">';
-        foreach ($others_temperature as $arr){
+        foreach ($others_temperature as $arr) {
             echo('<div class="day-temperature card">');
             echo '<p class="card-header">' . $day_times[$i] . '</p>';
             echo '<p class="card-body">' . $arr->plaintext . '</p>';
@@ -34,7 +35,6 @@ if($_SESSION['user']){
         }
         echo '</div>';
     }
-}
-else {
+} else {
     echo '<p class="alert alert-danger error-message">You have to sign in to see the today`s weather</p>';
 }

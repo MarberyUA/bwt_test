@@ -1,12 +1,14 @@
 <?php
 
+namespace Application\Core;
+
 class Router
 {
 
-    static function run()
+    static function Run()
     {
         $controller_name = 'Main';
-        $action_name = 'index';
+        $action_name = 'Index';
 
         // get request string
         $routes = explode('/', $_SERVER['REQUEST_URI']);
@@ -16,19 +18,19 @@ class Router
             $controller_name = ucfirst($routes[1]);
         }
 
-        if(!empty($routes[2])){
+        if(!empty($routes[2])) {
             $action_name = ($routes[2]);
         }
 
         $model_name =  ucfirst($controller_name). 'Model';
         $controller_name =  ucfirst($controller_name). 'Controller';
-        $action_name =  'action_' . $action_name;
+        $action_name =  'Action' . $action_name;
 
         //connect class file of request
         $model_file =  strtolower($model_name) . '.php';
         $model_path = 'application/models/'.$model_file;
 
-        if(file_exists($model_path)){
+        if(file_exists($model_path)) {
             include_once $model_path;
         }
 
@@ -37,18 +39,15 @@ class Router
 
         if(file_exists($controller_path)) {
             include_once $controller_path;
-        }
-        else {
+        } else {
             Router::ErrorPage();
         }
 
         //create an object and call the method
         $controller_object = new $controller_name;
-        $action = strtolower($action_name);
-        if(method_exists($controller_object, $action)){
+        if(method_exists($controller_object, $action_name)) {
             $controller_object->$action_name();
-        }
-        else {
+        } else {
             Router::ErrorPage();
         }
     }

@@ -1,4 +1,9 @@
 <?php
+
+use Application\Core\Controller;
+use Application\Core\View;
+require_once 'setting.php';
+
 class AuthenticationController extends Controller
 {
     function __construct()
@@ -8,20 +13,21 @@ class AuthenticationController extends Controller
 
     }
 
-    function action_index()
+    function ActionIndex()
     {
-        $this->view->generate('sign_in_view.php', 'template_view.php');
+        $this->view->Generate('sign_in_view.php', 'template_view.php');
     }
 
-    function action_sign_in(){
-        $this->model->sign_in($_POST['login'], $_POST['password-login']);
-        include 'setting.php';
+    function ActionSignIn()
+    {
+        $this->model->SignIn($_POST['login'], $_POST['password-login']);
         header('Location: http://' . HOST . '/authentication');
     }
 
-    function action_sign_out(){
+    function ActionSignOut()
+    {
         unset($_SESSION['user']);
         $_SESSION['success'] = 'You have signed out!';
-        $this->action_index();
+        $this->ActionIndex();
     }
 }

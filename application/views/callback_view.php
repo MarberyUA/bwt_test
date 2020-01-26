@@ -1,5 +1,6 @@
 <?php
-if($_SESSION['success']){
+
+if($_SESSION['success']) {
     echo '<p class="alert alert-success error-message"> '. $_SESSION['success'] . '</p>';
     unset($_SESSION['success']);
 }
@@ -9,7 +10,7 @@ else {
         echo '<p class="alert alert-danger error-message"> ' . $_SESSION['message'] . '</p>';
         unset($_SESSION['message']);
     }
-    echo '<form action="callback/create" method="post" enctype="multipart/form-data">
+    echo '<form action="callback/Create" method="post" enctype="multipart/form-data">
             <div class="">
                 <span>Enter your first name:</span>
                 <input type="text" name="callback-user-name" required class="form-control width-add" placeholder="Name:">

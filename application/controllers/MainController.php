@@ -1,12 +1,15 @@
 <?php
+use Application\Core\Controller;
+use Application\Core\View;
+
 class MainController extends Controller{
     function __construct()
     {
         $this->view = new View();
     }
 
-    function action_index()
+    function ActionIndex()
     {
-        $this->view->generate('main_view.php', 'template_view.php');
+        $this->view->Generate('main_view.php', 'template_view.php');
     }
 }

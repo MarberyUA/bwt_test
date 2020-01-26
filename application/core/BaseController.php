@@ -1,5 +1,7 @@
 <?php
 
+namespace Application\Core;
+
 class Controller
 {
 
@@ -11,7 +13,8 @@ class Controller
         $this->view = new View();
     }
 
-    function action_index()
+    function ActionIndex()
     {
+
     }
 }

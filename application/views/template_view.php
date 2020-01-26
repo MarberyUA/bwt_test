@@ -1,4 +1,6 @@
-<?php session_start();?>
+<?php session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +14,11 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-link" href="<?php include 'setting.php'; echo 'http://' . HOST . '/registration';?>">Sing up</a>
+        <a class="nav-link" href="<?php require_once 'setting.php'; echo 'http://' . HOST . '/registration';?>">Sing up</a>
         <?php
-        if($_SESSION['user']){
-            echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication/sign_out'. '">Sign Out</a>';
-        }
-        else{
+        if($_SESSION['user']) {
+            echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication/SignOut'. '">Sign Out</a>';
+        } else {
             echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication'. '">Sign In</a>';
         }
         ?>
