@@ -2,7 +2,8 @@
 
 use Application\Core\Controller;
 use Application\Core\View;
-require_once 'setting.php';
+use Localhost\DbSettings;
+
 
 class CallbackController extends Controller
 {
@@ -24,6 +25,6 @@ class CallbackController extends Controller
         } else {
             $_SESSION['message'] = 'The captcha is invalid!';
         }
-        header('Location: http://' . HOST . '/callback');
+        header('Location: http://' . DbSettings::$db_host . '/callback');
     }
 }

@@ -2,7 +2,7 @@
 
 use Application\Core\Controller;
 use Application\Core\View;
-require_once 'setting.php';
+use Localhost\DbSettings;
 
 class AuthenticationController extends Controller
 {
@@ -21,7 +21,7 @@ class AuthenticationController extends Controller
     function ActionSignIn()
     {
         $this->model->SignIn($_POST['login'], $_POST['password-login']);
-        header('Location: http://' . HOST . '/authentication');
+        header('Location: http://' . DbSettings::$db_host . '/authentication');
     }
 
     function ActionSignOut()

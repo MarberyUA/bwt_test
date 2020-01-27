@@ -1,5 +1,5 @@
 <?php session_start();
-
+    use Localhost\DbSettings;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,17 +14,17 @@
 </head>
 <body>
     <nav class="nav">
-        <a class="nav-link" href="<?php require_once 'setting.php'; echo 'http://' . HOST . '/registration';?>">Sing up</a>
+        <a class="nav-link" href="<?php require_once 'DbSettings.php'; echo 'http://' . DbSettings::$db_host . '/registration';?>">Sing up</a>
         <?php
         if($_SESSION['user']) {
-            echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication/SignOut'. '">Sign Out</a>';
+            echo '<a class="nav-link active" href="' . 'http://' . DbSettings::$db_host . '/authentication/SignOut'. '">Sign Out</a>';
         } else {
-            echo '<a class="nav-link active" href="' . 'http://' . HOST . '/authentication'. '">Sign In</a>';
+            echo '<a class="nav-link active" href="' . 'http://' . DbSettings::$db_host . '/authentication'. '">Sign In</a>';
         }
         ?>
-        <a class="nav-link" href="<?php echo 'http://' . HOST . '/callback';?>">Callback</a>
-        <a class="nav-link" href="<?php echo 'http://' . HOST . '/feedbacks';?>">Feedbacks</a>'
-        <a class="nav-link" href="<?php echo 'http://' . HOST . '/'?>">Today`s weather</a>
+        <a class="nav-link" href="<?php echo 'http://' . DbSettings::$db_host . '/callback';?>">Callback</a>
+        <a class="nav-link" href="<?php echo 'http://' . DbSettings::$db_host . '/feedbacks';?>">Feedbacks</a>'
+        <a class="nav-link" href="<?php echo 'http://' . DbSettings::$db_host . '/'?>">Today`s weather</a>
     </nav>
     <?php include 'application/views/'.$content_view;?>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

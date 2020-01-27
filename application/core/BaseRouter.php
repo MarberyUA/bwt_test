@@ -54,7 +54,7 @@ class Router
 
     static function ErrorPage()
     {
-        include 'setting.php';
+        include 'DbSettings.php';
         header('Location: http://' . HOST . '/NotFound');
     }
 }

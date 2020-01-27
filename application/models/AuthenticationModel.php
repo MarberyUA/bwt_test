@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 use Application\Core\Model;
 use Application\DatabaseConnector;
 
@@ -11,20 +9,18 @@ class AuthenticationModel extends Model
     {
         $password_md = md5($password);
         $db = DatabaseConnector::getInstrance();
-        $db_connetion = $db->GetConnection();
 
-        $check = mysqli_query($db_connetion, "SELECT * FROM users WHERE email = '$main' AND password = '$password_md'");
-        if(mysqli_num_rows($check) > 0) {
-            $user = mysqli_fetch_assoc($check);
+        $sth = $db->query("SELECT * FROM users WHERE email = '$main' AND password = '$password_md'");
+        if(($sth->rowCount()) > 0) {
+            $user = $sth->fetchALL();
             $_SESSION['user'] = [
-                "id" => $user['id'],
-                "name" => $user['name'],
-                "surname" => $user['surname']
+                "id" => $user[0]['id'],
+                "name" => $user[0]['name'],
+                "surname" => $user[0]['surname']
             ];
             $_SESSION['success'] = 'You have signed in!';
         } else {
             $_SESSION['message'] = 'The password or email you have entered is invalid!';
         }
-        mysqli_close($db_connetion);
     }
 }

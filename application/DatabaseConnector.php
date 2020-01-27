@@ -3,20 +3,32 @@
 namespace Application;
 
 use Application\Core\Singleton;
+use Localhost\DbSettings;
+use PDO;
 
 class DatabaseConnector extends Singleton
 {
-    private $db_fields = [];
+    protected $connection;
 
-    public function setValue($db_massive_values)
+    protected function __construct()
     {
-        $this->db_fields = $db_massive_values;
+        $this->connection = new PDO('mysql:host='.DbSettings::$db_host. ';dbname='.DbSettings::$db_name.'', DbSettings::$db_user, DbSettings::$db_user_password);
     }
 
     public function GetConnection()
     {
-        return mysqli_connect($this->db_fields[0], $this->db_fields[1], $this->db_fields[2], $this->db_fields[3]);
+        return $this->connection;
     }
 
+    public function  CloseConnection()
+    {
+        $this->connection = null;
+    }
 
+    public function query($sql)
+    {
+        $sth = $this->connection->prepare($sql);
+        $sth->execute();
+        return $sth;
+    }
 }
